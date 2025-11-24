@@ -1,6 +1,31 @@
-# Tensile (ts) - A Terminal-Based Cognitive Prosthetic for Structural Dynamics
+# Tensile (ts) - A Cognitive Prosthetic for Structural Dynamics
 
-A Rust CLI tool designed to support users in practicing structural dynamics by establishing and maintaining structural tension between clear visions and current reality, driving consistent, creative action toward desired outcomes.
+A Rust CLI + TUI tool that operationalizes structural tension into a personal intelligence system.
+
+## 🎯 Vision: Tensile 2.0 (Agency Engine)
+
+Tensile is being rebuilt as the **Agency Kernel** — a minimal, natural-law-compatible structural tension engine.
+
+**For Future Development:**
+- 📖 **[TENSILE_2_0_SPEC.md](./TENSILE_2_0_SPEC.md)** — Full system specification (read this first!)
+- 🗺️ **[IMPLEMENTATION_ROADMAP.md](./IMPLEMENTATION_ROADMAP.md)** — Development phases & timeline
+- 🤝 **[CONTRIBUTING.md](./CONTRIBUTING.md)** — How to contribute (AI agents & humans)
+
+**Current Status:** v0.1.0 (MVP CLI + TUI Foundation) → Transitioning to v2.0 (Agency Engine)
+
+---
+
+## What is Tensile?
+
+Tensile is **not** a task manager, habit tracker, or productivity database.
+
+Tensile exists to:
+- Reveal the gap between what you *claim* you want (vision) and what you *actually do* (behavior)
+- Maintain directionality
+- Compute the single next structural action
+- Minimize cognitive overhead
+
+**Tensile is a cognitive prosthetic, not a to-do list.**
 
 ## Installation
 
@@ -161,6 +186,47 @@ export TURSO_TOKEN="your-auth-token"
 - ✓ Multi-device sync (access from anywhere)
 - ✓ Automatic conflict resolution
 - ✓ SQL queries for advanced filtering
+
+---
+
+## 🚀 For Developers & AI Agents
+
+**Starting a new task on Tensile?**
+
+1. **First:** Read [TENSILE_2_0_SPEC.md](./TENSILE_2_0_SPEC.md) (especially Section G if you're an AI agent)
+2. **Next:** Check [IMPLEMENTATION_ROADMAP.md](./IMPLEMENTATION_ROADMAP.md) to see current phase
+3. **Contributing:** Follow [CONTRIBUTING.md](./CONTRIBUTING.md) guidelines
+
+**Key Documents:**
+- **TENSILE_2_0_SPEC.md** — System specification, Agency Kernel design, guardrails
+- **IMPLEMENTATION_ROADMAP.md** — Development phases, success criteria, what's next
+- **CONTRIBUTING.md** — Code standards, feature rules, core philosophy
+- **PHASES.md** — Historical development of v0.1.0
+
+**Non-Negotiable Rules (Enforce Always):**
+1. No feature increases user logging overhead
+2. All new data must compute toward tension, pattern, or leverage-point
+3. Every interaction ≤ 60 seconds with ≤ 3 editable fields
+4. Vision count limited to ~20
+5. Use Natural Law grammar in reasoning
+
+**Quick Commands:**
+```bash
+# Build CLI only
+cargo build
+
+# Build with TUI
+cargo build --features tui
+
+# Run tests
+cargo test --all
+
+# Check code quality
+cargo fmt
+cargo clippy -- -D warnings
+```
+
+---
 
 ## License
 
