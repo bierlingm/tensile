@@ -1,0 +1,21 @@
+# Rust
+/target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# Tensile database
+tensile_db.ron
+~/.tensile/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Local config
+.env
+.env.local
