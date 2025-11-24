@@ -37,6 +37,10 @@ pub enum Commands {
     /// Show structural coaching prompts
     #[command(visible_alias = "p")]
     Prompt,
+
+    /// Launch interactive TUI dashboard
+    #[cfg(feature = "tui")]
+    Dashboard,
 }
 
 impl Commands {
@@ -49,6 +53,11 @@ impl Commands {
             Commands::State(cmd) => cmd.execute(),
             Commands::Metrics(cmd) => cmd.execute(),
             Commands::Prompt => crate::cli::commands::prompt_command(),
+            #[cfg(feature = "tui")]
+            Commands::Dashboard => {
+                let rt = tokio::runtime::Runtime::new()?;
+                rt.block_on(crate::tui::run_dashboard())
+            }
         }
     }
 }
