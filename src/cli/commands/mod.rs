@@ -1,4 +1,5 @@
 pub mod action;
+pub mod metrics;
 pub mod pattern;
 pub mod reality;
 pub mod state;
@@ -29,6 +30,10 @@ pub enum Commands {
     #[command(subcommand)]
     State(state::StateCommands),
 
+    /// View metrics and insights
+    #[command(subcommand)]
+    Metrics(metrics::MetricsCommands),
+
     /// Show structural coaching prompts
     #[command(visible_alias = "p")]
     Prompt,
@@ -42,6 +47,7 @@ impl Commands {
             Commands::Action(cmd) => cmd.execute(),
             Commands::Pattern(cmd) => cmd.execute(),
             Commands::State(cmd) => cmd.execute(),
+            Commands::Metrics(cmd) => cmd.execute(),
             Commands::Prompt => crate::cli::commands::prompt_command(),
         }
     }
