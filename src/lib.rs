@@ -8,8 +8,5 @@ pub mod persistence;
 #[cfg(feature = "tui")]
 pub mod tui;
 
-#[cfg(feature = "cloud")]
-pub mod cloud;
-
 pub use error::{TensileError, TensileResult};
 pub use models::Database;

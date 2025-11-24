@@ -56,7 +56,14 @@ tensile prompt
 
 ## Database
 
-Database stored at `~/.tensile/db.ron` (human-readable RON format).
+**Local Storage**: SQLite database at `~/.tensile/tensile.db`
+
+**Cloud Sync**: Integrated with Turso for automatic cloud synchronization
+- Local-first: Works offline, syncs when connected
+- Multi-device: Access your visions from anywhere
+- Configuration: Set `TURSO_URL` and `TURSO_TOKEN` environment variables
+
+**Schema**: Tables for visions, reality_assessments, action_logs, and user state with proper indexes for performance.
 
 ## Development
 
@@ -113,13 +120,13 @@ tensile metrics summary
 - `PatternMetrics`: Tracks success rate, velocity, and 7-day recent actions
 - `PatternAnalyzer::get_detailed_metrics()`: Provides comprehensive behavior analysis
 
-## Phase 5: TUI Dashboard (Framework)
+## Phase 5: TUI Dashboard (In Progress)
 
 ### Structure
 ```
 src/tui/
-├── mod.rs          # TUI orchestration
-└── dashboard.rs    # Dashboard rendering (placeholder for expansion)
+├── mod.rs          # TUI orchestration  
+└── dashboard.rs    # Dashboard rendering (framework ready)
 ```
 
 ### Build & Run
@@ -127,7 +134,7 @@ src/tui/
 # Build with TUI support
 cargo build --features tui
 
-# Future: run interactive dashboard
+# Interactive dashboard (coming soon)
 cargo run --features tui -- dashboard
 ```
 
@@ -135,39 +142,25 @@ cargo run --features tui -- dashboard
 - **ratatui**: Modern TUI rendering
 - **crossterm**: Terminal event handling
 
-## Phase 6: Cloud Sync (Framework)
+## Cloud Sync via Turso
 
-### Structure
-```
-src/cloud/
-├── mod.rs          # Cloud config and orchestration
-└── sync.rs         # Sync logic (push/pull)
-```
+Tensile uses **Turso** (SQLite in the cloud) for automatic cloud synchronization:
 
-### Build & Run
 ```bash
-# Build with cloud sync support
-cargo build --features cloud
+# Set up Turso integration
+export TURSO_URL="libsql://your-db-url.turso.io"
+export TURSO_TOKEN="your-auth-token"
 
-# Set environment variables
-export TENSILE_CLOUD_URL="https://api.tensile.dev"
-export TENSILE_CLOUD_TOKEN="your-token"
-export TENSILE_USER_ID="your-user-id"
-
-# Future: sync commands
-cargo run --features cloud -- sync push
-cargo run --features cloud -- sync pull
+# Automatic sync happens in background
+# Local SQLite db stays in sync with Turso
 ```
 
-### Technologies
-- **reqwest**: Async HTTP client
-- **tokio**: Async runtime
-
-### API Contract
-Cloud sync uses these endpoints:
-- `POST /sync/push` - Upload local database
-- `GET /sync/pull` - Download remote database
-- Headers: `Authorization: Bearer <token>`, `X-User-ID: <user-id>`
+**Benefits**:
+- ✓ Managed cloud infrastructure (no custom API)
+- ✓ Local-first architecture (works offline)
+- ✓ Multi-device sync (access from anywhere)
+- ✓ Automatic conflict resolution
+- ✓ SQL queries for advanced filtering
 
 ## License
 

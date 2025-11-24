@@ -5,6 +5,9 @@ pub enum TensileError {
     #[error("IO error: {0}")]
     Io(#[from] std::io::Error),
 
+    #[error("Database error: {0}")]
+    Database(String),
+
     #[error("Serialization error: {0}")]
     Serialization(String),
 
@@ -41,5 +44,11 @@ impl From<ron::error::SpannedError> for TensileError {
 impl From<uuid::Error> for TensileError {
     fn from(err: uuid::Error) -> Self {
         TensileError::Parse(err.to_string())
+    }
+}
+
+impl From<rusqlite::Error> for TensileError {
+    fn from(err: rusqlite::Error) -> Self {
+        TensileError::Database(err.to_string())
     }
 }
